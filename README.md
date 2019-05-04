@@ -3,19 +3,17 @@
 # LICENSE
 EULA
 
-# What this software do?
-1. ICMP Attack Software for Blind MITM Using localhost Traffic
-2. Seperately python script or use setup for automated attack
-3. Find out HTTPS passwords in network using localhost in this Blind MITM
-
 <div align="center">
     <img src="" width="400px"</img> 
 </div>
 
 
-# How requests are handled?
-1. Web requests are automatically handled by Perl modules
-2. Web requests are automatically handled by Python modules
+# What is it?
+1. ICMP Attack Software for Blind MITM Using localhost Traffic
+2. Seperately python script or use setup for automated attack
+3. Find out HTTPS passwords in network using localhost in this Blind MITM
+4. Web requests are automatically handled by Perl modules
+5. Web requests are automatically handled by Python modules
 
 # Advantages
 1. It doesn't need ARP
