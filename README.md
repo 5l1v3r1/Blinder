@@ -38,9 +38,8 @@ EULA
 2. Python file to seperate attack
 
 # Requirement
-1. Strictly Kali
-2. Kali should have all dependencies install for this as Perl and Python
-3. Install Bettercap using: apt-get install bettercap
+1. Kali have dependencies installed
+2. Install Bettercap,sudo apt-get install bettercap
 
 # Contact
 mrharoonawan@gmail.com
