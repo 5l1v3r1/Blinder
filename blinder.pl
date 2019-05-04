@@ -84,7 +84,6 @@ system ("ifconfig $interface");
 # start ssl strip
 my $ssl;
 my $log;
-print "########################################\n";
 print "[ + ] Starting SSL Strip.\n";
 print "[ + ] We have a few options for our parameters with SSL Strip.\n";
 print "[ + ] Here are you options: \nsniff all traffic, kill active sessions, log data (akl) \nkill, log, and sniff only https traffic (kl) \nlog https traffic only(l)\n";
@@ -105,7 +104,6 @@ print "Enter name of the log file, it has to end with '.log'? (ex: strip.log )\n
 
 # start following the sslstrip log using tail
 my $tail;
-print "########################################\n";
 print "[ + ] Do you want to start to follow the log file in real time? (y/n)\n";
     $tail=<STDIN&>;
     chomp($tail);    
@@ -126,7 +124,7 @@ $localhost=127.0.0.1;
 print "[ + ] Enter Gateway? (y/n)\n";
     $gateway=<STDIN>;
     chomp($gateway);
-print "[ + ] Do you want to spoof a specific target? (y/n)\n";
+print "[ + ] Do you want to start a blind attack? (y/n)\n";
     $blindarp=<STDIN>;
     chomp($blindarp);
         if ($blindarp eq "y"){
