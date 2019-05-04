@@ -26,7 +26,7 @@ EULA
 
 # Hack Technique
 1. First run Setup.pl, it will setup your computer for the successfull attack 
-2. This use ICMP TYPE 5 Attack, using Datagram in layer 2 of OSI model for TCP-IP
+2. This use ICMP TYPE 5 Attack, using IP Datagram of Transport Protocol used in Transport Layer 4 in OSI Model
 
 # Hacking HTTPS
 1. This method works very well
