@@ -19,14 +19,11 @@ EULA
 1. It doesn't need ARP
 2. It can quitely redirect victim traffic into your own computer
 3. Using your own computer localhost, you can easily see HTTPS traffic
-
-# Bypass IDS/Firewalls
-1. This will not alarm IDS/Firewall
-2. ARP / Spoofing method will
+4. This will not alarm IDS/Firewall
+5. ARP / Spoofing method will
 
 # Attack Technique
-1. First run Setup.pl, it will setup your computer for the successfull attack 
-2. This use ICMP TYPE 5 Attack, using IP Datagram of Transport Protocol used in Transport Layer 4 in OSI Model
+1. This use ICMP TYPE 5 Attack, using IP Datagram of Transport Protocol used in Transport Layer 4 in OSI Model
 
 # Breaking HTTPS
 1. This method works very well
@@ -37,7 +34,8 @@ EULA
 6. See Gmail, Facebook, Instagram and many others paswords
 
 # Installation
-1. Manual, Perl and Python
+1. First run Setup.pl, it will setup your computer for the successfull attack 
+2. Python file to seperate attack
 
 # Requirement
 1. Strictly Kali
