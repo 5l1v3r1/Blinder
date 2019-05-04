@@ -24,13 +24,10 @@
 use strict;
 use warnings;
 
-# open /etc/etter.conf and uncomment
-# iptables redirect on/off
-# ctrl+o to save changes
-# ctrl+x to exit nano and continue with script
 system("clear");
 
 print "[ ! ] Setting up environment [ ! ]\n";
+
 my $tables;
 print "[ + ] You will have to uncomment iptables redirect.\n";
 print "[ + ] Inside nano use ctrl+o to save your changes ctrl+x to exit and continue the script.\n";
