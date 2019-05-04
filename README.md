@@ -30,11 +30,11 @@ EULA
 
 # Breaking HTTPS
 1. This method works very well
-2. Hack traffic using localhost for PC
-3. Hack traffic using localhost for Mobile
-4. Hack traffic using localhost for I-PAD
-5. Hack traffic using localhost for Tablets
-6. Hack Gmail, Facebook, Instagram and many others
+2. See traffic using localhost for PC
+3. See traffic using localhost for Mobile
+4. See traffic using localhost for I-PAD
+5. See traffic using localhost for Tablets
+6. See Gmail, Facebook, Instagram and many others paswords
 
 # Installation
 1. Manual, Perl and Python
