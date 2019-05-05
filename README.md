@@ -4,7 +4,7 @@
 EULA
 
 <div align="center">
-    <img src="http://oi66.tinypic.com/2j0lgub.jpg" width="400px"</img> 
+    <img src="http://oi66.tinypic.com/2j0lgub.jpg" width="600px"</img> 
 </div>
 
 
