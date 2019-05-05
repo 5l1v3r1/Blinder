@@ -24,11 +24,10 @@ EULA
 - Blind  : ICMPAttack.py -v -i wlan0 -g 192.168.15.0 -t 192.168.15.18 && sslstrip -a -k -l 8080 -i logs.txt
 
 # Tips
-1. Try to local victim account, 90% of the time, victim will use gmail to recover password
+1. Try to lock victim accounts, 90% of the time, victim will use gmail to recover password
 
 # Breaking HTTPS
 1. See traffic using localhost for PC, Mobile, I-PAD, Tablets
-2. See Gmail, Facebook, Instagram and many others paswords
 
 # Installation
 1. Perl script to form automated and guided attack
