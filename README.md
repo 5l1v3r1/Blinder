@@ -40,12 +40,12 @@ EULA
 6. See Gmail, Facebook, Instagram and many others paswords
 
 # Installation
-1. First run Setup.pl, it will setup your computer for the successfull attack 
-2. Python file to seperate attack
+1. Automatic and guided attack use, Perl
+2. Manual use Python 
 
 # Requirement
-1. Kali have dependencies installed
-2. Install Bettercap,sudo apt-get install bettercap
+1. In terminal: sudo apt-get install bettercap
+2. In terminal: Perl -MCPAN -e shell, then, install Term::ANSIColor
 
 # Contact
 mrharoonawan@gmail.com
