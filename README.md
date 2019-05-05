@@ -9,7 +9,7 @@ EULA
 
 
 # What is it?
-1. ICMP Attack Software for Blind MITM Using localhost Traffic
+1. ICMP Attack Software to perform a blind mitm attack by redirecting victim traffic into our localhost
 
 # Advantage
 1. No noisy spoofings
