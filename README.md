@@ -8,13 +8,13 @@ EULA
 </div>
 
 
-# What is it?
-1. ICMP Attack Software to perform a blind mitm attack by redirecting victim traffic into our localhost
+# What is blinder?
+1. It can perform a blind mitm attack by redirecting victim traffic into our localhost
+2. It will not alert IDS/Firewalls and no noise
+3. It will use datagram redirection code in network/transport layer to communicate with TCP-IP
 
 # Advantage
-1. No noisy spoofings
-2. This will not alarm IDS/Firewall
-3. Sniff traffic using your localhost
+1. Sniff traffic using your localhost
 
 # Attack Technique
 1. This use ICMP TYPE 5 Attack, using IP Datagram of Transport Protocol used in Transport Layer 4 in OSI Model
